@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/Profile.css';
+import '../styles/Profile1.css';
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [requests, setRequests] = useState([]);
-  const [teamDetails, setTeamDetails] = useState(null);
-  const [teamName, setTeamName] = useState('');
-  const [requiredSkills, setRequiredSkills] = useState('');
-  const [teamRequests, setTeamRequests] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [noJoinRequests, setNoJoinRequests] = useState(false);
+  const [socialMediaLinks, setSocialMediaLinks] = useState({
+    senderSocialMedia: '',
+    receiverSocialMedia: '',
+  });
 
+  // Fetch user data and connection requests when the component mounts
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -21,12 +21,13 @@ const Profile = () => {
 
         const parsedUD = JSON.parse(userData);
         const uID = parsedUD.id;
-        console.log(parsedUD);
+
+        // Fetch user profile
         const userResponse = await axios.get(`http://localhost:5000/skillswap/profile`, { withCredentials: true });
         setUserDetails(userResponse.data);
 
+        // Fetch connection requests
         fetchConnectionRequests(uID);
-        fetchTeamDetails(uID);  // Pass userId instead of teamId based on the backend code
       } catch (error) {
         console.error('Error fetching user data', error);
       } finally {
@@ -37,6 +38,7 @@ const Profile = () => {
     fetchUserData();
   }, []);
 
+  // Fetch pending connection requests for the user
   const fetchConnectionRequests = async (userId) => {
     try {
       const response = await axios.get(`http://localhost:5000/skillswap/requests?userId=${userId}`);
@@ -46,87 +48,37 @@ const Profile = () => {
     }
   };
 
-  const fetchTeamDetails = async (userId) => {
+  // Accept a connection request
+  const handleAcceptRequest = async (requestId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/skillswap/team`,{params:{userId}});
-      const data = response.data;
-      
-      // Ensure members is always an array
-      const members = Array.isArray(data.members) ? data.members : JSON.parse(data.members || '[]');
-      setTeamDetails({
-        ...data,
-        members: members, // Use parsed members
+      const response = await axios.put(`http://localhost:5000/skillswap/requests/accept`, {
+        requestId, // Pass the requestId, not userId
       });
-      setTeamRequests(data.requests || []);
-      setNoJoinRequests(data.noJoinRequests || false);
-    } catch (error) {
-      console.error('Error fetching team details', error);
-    }
-  };
 
-  const handleCreateTeam = async () => {
-    if (!teamName || !requiredSkills) {
-      alert('Please provide both team name and required skills.');
-      return;
-    }
-    try {
-      const response = await axios.post('http://localhost:5000/skillswap/team/create', {
-        teamName,
-        leaderId: userDetails.id,
-        members: [],
-      });
-      setTeamDetails(response.data.team);
-      alert('Team created successfully');
-    } catch (error) {
-      console.error('Error creating team', error);
-      alert('Failed to create team');
-    }
-  };
-
-  const handleAcceptRequest = async (userId) => {
-    try {
-      const response = await axios.put(`http://localhost:5000/skillswap/team/add-member`, {
-        teamId: teamDetails.id,
-        userId,
-      });
       alert(response.data.message);
-      fetchTeamDetails(userDetails.id);  // Refresh team details
+      setSocialMediaLinks({
+        senderSocialMedia: response.data.senderSocialMedia,
+        receiverSocialMedia: response.data.receiverSocialMedia,
+      });
+
+      fetchConnectionRequests(userDetails.id); // Refresh the connection requests
     } catch (error) {
       console.error('Error accepting request', error);
       alert('Failed to accept request');
     }
   };
 
-  const handleRejectRequest = async (userId) => {
+  // Reject a connection request
+  const handleRejectRequest = async (requestId) => {
     try {
-      const response = await axios.put(`http://localhost:5000/skillswap/team/remove-member`, {
-        teamId: teamDetails.id,
-        userId,
+      const response = await axios.put(`http://localhost:5000/skillswap/requests/reject`, {
+        requestId, // Pass the requestId, not userId
       });
       alert(response.data.message);
-      fetchTeamDetails(userDetails.id);  // Refresh team details
+      fetchConnectionRequests(userDetails.id); // Refresh the connection requests
     } catch (error) {
       console.error('Error rejecting request', error);
       alert('Failed to reject request');
-    }
-  };
-
-  const handleRemoveMember = async (userId) => {
-    if (teamDetails.members.length === 1) {
-      alert("Cannot remove the last member (team leader)");
-      return;
-    }
-
-    try {
-      const response = await axios.put(`http://localhost:5000/skillswap/team/remove-member`, {
-        teamId: teamDetails.id,
-        userId,
-      });
-      alert(response.data.message);
-      fetchTeamDetails(userDetails.id);  // Refresh team details
-    } catch (error) {
-      console.error('Error removing member', error);
-      alert('Failed to remove member');
     }
   };
 
@@ -162,6 +114,7 @@ const Profile = () => {
               <li key={request.id}>
                 <p>{request.senderName} wants to connect with you</p>
                 <button onClick={() => handleAcceptRequest(request.id)}>Accept</button>
+                <button onClick={() => handleRejectRequest(request.id)}>Reject</button>
               </li>
             ))}
           </ul>
@@ -170,59 +123,14 @@ const Profile = () => {
         )}
       </section>
 
-      <section className="team-management">
-        <h2>Team Management</h2>
-        {teamDetails ? (
-          <div className="team-details">
-            <h3>Team: {teamDetails.team_name}</h3>
-            <p><strong>Members:</strong> {Array.isArray(teamDetails.members) ? teamDetails.members.join(', ') : 'Invalid members data'}</p>
-            <p><strong>Leader:</strong> {teamDetails.leader_id}</p>
-            {userDetails.id === teamDetails.leader_id && (
-              <div className="team-requests">
-                <h4>Join Requests</h4>
-                {teamRequests.length > 0 ? (
-                  <ul>
-                    {teamRequests.map((request) => (
-                      <li key={request.id}>
-                        <p>{request.senderName} wants to join your team</p>
-                        <button onClick={() => handleAcceptRequest(request.id)}>Accept</button>
-                        <button onClick={() => handleRejectRequest(request.id)}>Reject</button>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No pending join requests</p>
-                )}
-              </div>
-            )}
-            <div className="remove-member">
-              <h4>Remove Team Member</h4>
-              {teamDetails.members.length > 1 && teamDetails.members.map((memberId) => (
-                <button key={memberId} onClick={() => handleRemoveMember(memberId)}>
-                  Remove Member {memberId}
-                </button>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="create-team">
-            <h3>Create a Team</h3>
-            <input
-              type="text"
-              placeholder="Team Name"
-              value={teamName}
-              onChange={(e) => setTeamName(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Required Skills"
-              value={requiredSkills}
-              onChange={(e) => setRequiredSkills(e.target.value)}
-            />
-            <button onClick={handleCreateTeam}>Create Team</button>
-          </div>
-        )}
-      </section>
+      {/* Display Social Media Links */}
+      {socialMediaLinks.senderSocialMedia && (
+        <section className="social-media">
+          <h3>Social Media Links</h3>
+          <p><strong>Sender's Social Media:</strong> {socialMediaLinks.senderSocialMedia}</p>
+          {/* <p><strong>Receiver's Social Media:</strong> {socialMediaLinks.receiverSocialMedia}</p> */}
+        </section>
+      )}
     </div>
   );
 };

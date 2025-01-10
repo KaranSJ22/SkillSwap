@@ -168,7 +168,7 @@ function Login() {
                 const response = await axios.post('http://localhost:5000/skillswap/login', credentials, { withCredentials: true });
                 localStorage.setItem('user', JSON.stringify(response.data.user));
                 // console.log("Login successful:", response.data);
-                navigate("/home"); 
+                navigate("/profile"); 
             } catch (error) {
                 console.error('Login failed:', error);
                 setError(error.response?.data?.message || "Login failed. Please try again.");

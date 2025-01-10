@@ -1,33 +1,35 @@
 import React from 'react';
 import DevProfileCard from '../Components/DevProfileCard/DevprofileCard';
+import pic1  from '../assets/1.jpg';
 const users=[
   {
-    id:4,
+    id:1,
     name:"Karan SJ",
     year:"2nd Year",
     email:"karansj@gmail.com",
-    profileImage:"https://media.licdn.com/dms/image/v2/D5603AQHF3T8cHwSusg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705587748017?e=1740614400&v=beta&t=6LCdxQlu_ZFAs8nKapNlnCST-xlTZ4rVtzKWph4He54"
+    profileImage:""
   },
   {
-    id:4,
-    name:"Goutam Kulkarni",
-    year:"2nd Year",
-    email:"goutamk@gmail.com",
-    profileImage:"https://media.licdn.com/dms/image/v2/D5603AQHF3T8cHwSusg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705587748017?e=1740614400&v=beta&t=6LCdxQlu_ZFAs8nKapNlnCST-xlTZ4rVtzKWph4He54"
-  },
-  {
-    id:4,
+    id:3,
     name:"K Akshay",
     year:"2nd Year",
     email:"kakshay@gmail.com",
-    profileImage:"https://media.licdn.com/dms/image/v2/D5603AQHF3T8cHwSusg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705587748017?e=1740614400&v=beta&t=6LCdxQlu_ZFAs8nKapNlnCST-xlTZ4rVtzKWph4He54"
+    profileImage:{pic1}
   },
+  {
+    id:2,
+    name:"Goutam Kulkarni",
+    year:"2nd Year",
+    email:"goutamk@gmail.com",
+    profileImage:""
+  },
+  
   {
     id:4,
     name:"K Hitheswara Rao",
     year:"2nd Year",
     email:"hitheswara@gmail.com",
-    profileImage:"https://media.licdn.com/dms/image/v2/D5603AQHF3T8cHwSusg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705587748017?e=1740614400&v=beta&t=6LCdxQlu_ZFAs8nKapNlnCST-xlTZ4rVtzKWph4He54"
+    profileImage:"",
   }
 
 ]
