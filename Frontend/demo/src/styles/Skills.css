@@ -1,0 +1,136 @@
+.skills-container {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+.skills-container h1 {
+    font-size: 2.5rem;
+    color: #38527c;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+.skills-container p {
+    font-size: 1.2rem;
+    color: #475569;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+ 
+.profile-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: stretch;
+    padding: 20px;
+  }
+  
+ 
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+
+  .background-image {
+    height: 120px;
+    background: linear-gradient(45deg, #7ba19e, #e6e89dfc);
+  }
+  
+  
+  .image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+  }
+  
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    object-fit: cover;
+  }
+  
+ 
+  .text-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .text-container .name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin: 10px 0;
+  }
+  
+  .text-container .year {
+    font-size: 1rem;
+    color: #64748b;
+    margin-bottom: 10px;
+  }
+  
+  .text-container .skills,
+  .text-container .interested-in {
+    font-size: 0.9rem;
+    color: #475569;
+    margin: 5px 0;
+    line-height: 1.4;
+  }
+  
+  /* Connect Button */
+  .connect-button {
+    display: block;
+    margin: 15px auto 20px auto;
+    padding: 10px 20px;
+    background-color: #7ba19e;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .connect-button:hover {
+    background-color: #e6e89dfc;
+    transform: scale(1.05);
+    color: #7ba19e;
+  }
+  
+  .connect-button:active {
+    transform: scale(1);
+  }
+  
+ 
+  @media (max-width: 768px) {
+    .skills-container h1 {
+      font-size: 2rem;
+    }
+  
+    .skills-container p {
+      font-size: 1rem;
+    }
+  
+    .profile-card-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+  

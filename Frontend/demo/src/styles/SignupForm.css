@@ -1,0 +1,165 @@
+
+.signup-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 90%;
+}
+
+
+.form-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333333;
+    text-align: center;
+}
+
+
+form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+input,
+select {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #7ba19e; 
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn {
+    background-color: #7ba19e;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.primary-btn:hover {
+    background-color: #e6e89dfc;
+    color: #7ba19e;
+}
+
+.secondary-btn {
+    background-color: #ffffff;
+    color: #7ba19e;
+    border: 2px solid #7ba19e;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.secondary-btn:hover {
+    background-color: #e6e89dfc;
+    color: #7ba19e;
+}
+
+
+.error-text {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+
+.image-section {
+    flex: 1;
+    background: #f0f0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+.image-preview {
+    margin-top: 1rem;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .signup-container {
+        flex-direction: column;
+    }
+
+    .form-section,
+    .image-section {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    input,
+    select,
+    button {
+        font-size: 0.9rem;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        padding: 10px;
+    }
+}

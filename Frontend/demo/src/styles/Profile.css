@@ -1,0 +1,198 @@
+
+/* latest */
+/* Profile Container */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Profile Details */
+.profile-details {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-details h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.profile-details p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.edit-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Requests Section */
+.requests-section,
+.team-section {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 20px;
+}
+
+.requests-section h3,
+.team-section h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.request-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.request-item,
+.team-request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.request-item p,
+.team-request-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #555555;
+}
+
+.accept-btn,
+.create-team-btn {
+  padding: 8px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accept-btn {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.accept-btn:hover {
+  background-color: #218838;
+}
+
+.create-team-btn {
+  background-color: #ffc107;
+  color: #ffffff;
+}
+
+.create-team-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Social Link */
+.social-link {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.social-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.social-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-details,
+  .requests-section,
+  .team-section {
+    padding: 15px;
+  }
+
+  .profile-details h2,
+  .requests-section h3,
+  .team-section h3 {
+    font-size: 18px;
+  }
+
+  .profile-details p,
+  .request-item p {
+    font-size: 14px;
+  }
+
+  .edit-btn,
+  .accept-btn,
+  .create-team-btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+.team-ip{
+  width: 90%;
+  margin-bottom: 10px;
+}
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 10px;
+  }
+
+  .profile-details,
+  .requests-section,
+  .team-section {
+    width: 100%;
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .request-item,
+  .team-request-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .request-item p,
+  .team-request-item p {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .accept-btn,
+  .create-team-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

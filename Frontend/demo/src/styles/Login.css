@@ -1,0 +1,92 @@
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* height: 100vh; */
+    margin-top: 12rem;
+}
+
+/* Login Card */
+.login-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Heading */
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2d2d2d; /* Darker shade for better readability */
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 1.5rem;
+    margin-right: 0.9rem;
+}
+
+/* Label */
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Input Focus */
+input:focus {
+    border-color: #7ba19e; /* Subtle green tone (similar to Skills page theme) */
+}
+
+/* Error Message */
+.error-message {
+    font-size: 0.85rem;
+    color: #e74c3c; /* Red for error messages */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Login Button */
+.login-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #7ba19e; /* Subtle green tone (similar to Skills page theme) */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Login Button Hover */
+.login-button:hover {
+    background-color: #e6e89dfc; /* Slightly darker green */
+    color: #7ba19e;
+}
+
+/* Login Button Active */
+.login-button:active {
+    background-color: #5c8c77; /* Even darker green */
+}

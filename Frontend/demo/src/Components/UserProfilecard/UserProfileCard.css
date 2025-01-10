@@ -1,0 +1,72 @@
+/* UserProfileCard.css */
+.card {
+  width: 320px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.background-image {
+  height: 100px;
+  background: #f7f7f7;
+}
+
+.image-container {
+  margin-top: -40px;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-container {
+  padding: 16px;
+}
+
+.name {
+  font-size: 1.25rem;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.year, .skills, .interested-in,.branch {
+  font-size: 0.9rem;
+  color: #888888;
+  margin-bottom: 6px;
+}
+
+.skills strong, .interested-in strong {
+  color: #333333;
+}
+
+.connect-button {
+  width: 90%;
+  padding: 10px 0;
+  margin: 16px 0;
+  background: #d8d8d8;
+  color: #333333;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.connect-button:hover {
+  background: #b0b0b0;
+}

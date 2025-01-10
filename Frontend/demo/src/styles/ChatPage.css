@@ -1,0 +1,38 @@
+.chat-page {
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 400px;
+    overflow-y: auto;
+  }
+  
+  .sent {
+    text-align: right;
+    background-color: #dcf8c6;
+  }
+  
+  .received {
+    text-align: left;
+    background-color: #fff;
+  }
+  
+  .message-input {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .message-input input {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .message-input button {
+    padding: 10px 20px;
+  }
+  
